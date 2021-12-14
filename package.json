@@ -1,12 +1,16 @@
 {
   "name": "tree-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tree demo",
   "main": "dist/index.js",
   "private": false,
+  "bin": {
+    "tree-demo-cli": "./bin/tree-cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "author": "egsee",
   "license": "MIT",
   "repository": {
@@ -17,7 +21,11 @@
   "keywords": [
     "tree-demo"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^8.3.0",
+    "fs-extra": "^10.0.0"
+  },
   "engines": {
     "node": ">= 12"
   }
