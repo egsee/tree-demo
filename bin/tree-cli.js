@@ -1,8 +1,10 @@
-import { program } from 'commander/esm.mjs';
-import chalk from 'chalk';
-import fs from 'fs-extra';
-import ReadDirToTree from '../src/read-dir-to-tree.js';
-import Tree from '../src/main.js';
+#!/usr/bin/env node
+
+var program = require('commander'),
+    chalk = require('chalk'),
+    fs = require('fs-extra'),
+    ReadDirToTree = require('../read-dir-to-tree.js'),
+    Tree = require('../main.js');
 
 function errorColor (str) {
     return `\x1b[31m${str}\x1b[0m`;
@@ -15,7 +17,7 @@ program
     });
 
 program
-    .version('1.0.1')
+    .version('1.0.2')
     .option('-d, --dir <directoryPath>', 'the directory path you want to render by tree')
     .option('-o, --out <filename>', 'write the tree to a new file')
     .option('-i, --ignore <ignoreFiles>', 'ignore file(s) or directory')
@@ -39,11 +41,10 @@ var valid = assert(!options.out || (options.dir && options.out), "warn: option '
 
 if (valid) {
     if (options.dir) {
-        var readDirToTree = new ReadDirToTree(options);
-        var treeData = readDirToTree.getFileTree();
 
-        var tree = new Tree(treeData);
-        var outputContent = tree.getStringTree();
+        var treeData = ReadDirToTree.getFileTree(options);
+     
+        var outputContent = Tree.getStringTree(treeData);
 
         var color = options.color || 'white';
 
@@ -81,5 +82,3 @@ function writeTreeToFile (filename, outputContent) {
         }
     })
 }
-
-export default Tree;

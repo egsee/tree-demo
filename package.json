@@ -1,16 +1,15 @@
 {
   "name": "tree-demo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tree demo",
-  "main": "dist/index.js",
+  "main": "main.js",
   "private": false,
   "bin": {
-    "tree-demo-cli": "./bin/tree-cli.js"
+    "tree-demo-cli": "bin/tree-cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module",
   "author": "egsee",
   "license": "MIT",
   "repository": {
